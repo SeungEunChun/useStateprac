@@ -55,19 +55,22 @@ function App() {
   }
 
   const handleItemClick = (index) => {
-    weekchange(index);
-    setPaused(true);
+    weekchange(index); //useEffect 진행!
+    setPaused(true); //useEffect 정지!
 
     setTimeout(() => {
       setPaused(false);
-    }, 3000);
+      weekUpdate();
+    }, 2000);
   }
 
 
 
 
   useEffect(() => {
-    const intervalId = setInterval(weekUpdate, 2000);
+    //isPaused 값에 따라 weekUpdate가 아무것도 없이 진행되면 week의 값이 변화가 없음,
+    //변화가 없다면 useEffect가 진행되지 않는다.
+    const intervalId = setInterval(weekUpdate, 1000);
 
     return () => clearInterval(intervalId);
   }, [week, isPaused]);
@@ -110,3 +113,11 @@ export default App;
 // let count;
 // if ( count >= 7 ){ count = 0 ; } else { count + 1 ; }
 // }
+
+
+// const handleItemClick = (index) => { // 랜더링 2번진행
+//weekchange(index); // week 변경 -> useEffect을 통한 -> 데이터 가져와서 화면 변경됨
+//setPaused(true); // 화면변경되나 -> week값이 똑같아서 -> useEffect 죽어버림
+//  }
+
+//useState는 값이 같으면 랜더링 안함 / useEffect은 디펜던시에 있는 useState변수값이 수정될때 만 함
