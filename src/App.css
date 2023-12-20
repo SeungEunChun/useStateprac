@@ -32,7 +32,32 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+
+li {
+  list-style: none;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.tablist {
+  justify-content: center;
+  padding-left: 1px;
+}
+
+.tablist li {
+  padding: 0 1rem;
+  border: 1px solid black;
+  margin-left: -1px;
+}
+
+.act {
+  background-color: yellow;
 }
