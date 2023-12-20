@@ -26,14 +26,21 @@ function App() {
     return () => clearInterval(intervalId);
   }, [week]);
 
+
+
   //const weekUpdate = () =>{weekchange((week+1)%weeklist.length)}
 
 
   return (
     <div className="App">
+      <ul className='d-flex tablist'>
+        {
+          weeklist.map((v, i) => {
+            return <li className={week === i ? "act" : null}>{v}요일</li>
 
-      <button onClick={weekUpdate}>클릭하면 요일이 넘어가거나 가만히 둬도 넘어감</button>
-      <p>{weeklist[week]}요일</p>
+          })
+        }
+      </ul>
     </div>
   );
 }
